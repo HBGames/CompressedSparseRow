@@ -1,0 +1,23 @@
+﻿{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "Compact Sparse Row Graph",
+	"Description": "Memory-efficient Compressed Sparse Row (CSR) graph data structure for storing and iterating sparse adjacency relationships. Provides optimal cache locality for neighbor traversal with minimal memory overhead.",
+	"Category": "Programming",
+	"CreatedBy": "Hitbox Games, LLC",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "CompactSparseRow",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
