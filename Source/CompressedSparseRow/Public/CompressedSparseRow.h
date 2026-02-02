@@ -100,19 +100,30 @@ public:
 	}
 
 	/** @return The number of nodes in the graph. */
-	FORCEINLINE IndexType GetNumNodes() const { return NumNodes; }
+	[[nodiscard]] FORCEINLINE IndexType GetNumNodes() const { return NumNodes; }
 
 	/** @return The total number of directed edges in the graph. */
-	FORCEINLINE int32 GetNumEdges() const { return Neighbors.Num(); }
+	[[nodiscard]] FORCEINLINE int32 GetNumEdges() const { return Neighbors.Num(); }
 
 	/**
 	 * Checks if a node index is valid for this graph.
 	 * @param Node  The node index to validate.
 	 * @return True if Node is in the range [0, NumNodes).
 	 */
-	FORCEINLINE bool IsValidNode(IndexType Node) const
+	[[nodiscard]] FORCEINLINE bool IsValidNode(IndexType Node) const
 	{
 		return Node >= 0 && Node < NumNodes;
+	}
+
+	/**
+	 * Returns the out-degree (number of outgoing edges) for a node.
+	 * @param Node  The node whose degree to retrieve. Must be a valid node index.
+	 * @return The number of outgoing edges from this node.
+	 */
+	[[nodiscard]] FORCEINLINE int32 GetDegree(IndexType Node) const
+	{
+		check(IsValidNode(Node));
+		return Offsets[static_cast<int32>(Node) + 1] - Offsets[static_cast<int32>(Node)];
 	}
 
 	/**
@@ -124,7 +135,7 @@ public:
 	 * @param Node  The node whose neighbors to retrieve. Must be a valid node index.
 	 * @return A const array view of neighbor indices. May be empty if the node has no outgoing edges.
 	 */
-	FORCEINLINE TConstArrayView<IndexType> GetNeighbors(IndexType Node) const
+	[[nodiscard]] FORCEINLINE TConstArrayView<IndexType> GetNeighbors(IndexType Node) const
 	{
 		check(IsValidNode(Node));
 		const int32 Start = Offsets[static_cast<int32>(Node)];
@@ -140,7 +151,7 @@ public:
 	 *
 	 * @return Const view of the offsets array.
 	 */
-	FORCEINLINE TConstArrayView<int32> GetOffsets() const
+	[[nodiscard]] FORCEINLINE TConstArrayView<int32> GetOffsets() const
 	{
 		return TConstArrayView<int32>(Offsets);
 	}
@@ -153,7 +164,7 @@ public:
 	 *
 	 * @return Const view of the neighbors array.
 	 */
-	FORCEINLINE TConstArrayView<IndexType> GetNeighborArray() const
+	[[nodiscard]] FORCEINLINE TConstArrayView<IndexType> GetNeighborArray() const
 	{
 		return TConstArrayView<IndexType>(Neighbors);
 	}
@@ -422,19 +433,30 @@ public:
 	}
 
 	/** @return The number of nodes in the graph. */
-	FORCEINLINE IndexType GetNumNodes() const { return NumNodes; }
+	[[nodiscard]] FORCEINLINE IndexType GetNumNodes() const { return NumNodes; }
 
 	/** @return The total number of directed edges in the graph. */
-	FORCEINLINE int32 GetNumEdges() const { return Neighbors.Num(); }
+	[[nodiscard]] FORCEINLINE int32 GetNumEdges() const { return Neighbors.Num(); }
 
 	/**
 	 * Checks if a node index is valid for this graph.
 	 * @param Node  The node index to validate.
 	 * @return True if Node is in the range [0, NumNodes).
 	 */
-	FORCEINLINE bool IsValidNode(IndexType Node) const
+	[[nodiscard]] FORCEINLINE bool IsValidNode(IndexType Node) const
 	{
 		return Node >= 0 && Node < NumNodes;
+	}
+
+	/**
+	 * Returns the out-degree (number of outgoing edges) for a node.
+	 * @param Node  The node whose degree to retrieve. Must be a valid node index.
+	 * @return The number of outgoing edges from this node.
+	 */
+	[[nodiscard]] FORCEINLINE int32 GetDegree(IndexType Node) const
+	{
+		check(IsValidNode(Node));
+		return Offsets[static_cast<int32>(Node) + 1] - Offsets[static_cast<int32>(Node)];
 	}
 
 	/**
@@ -446,7 +468,7 @@ public:
 	 * @param Node  The node whose neighbors to retrieve. Must be a valid node index.
 	 * @return A const array view of neighbor indices. May be empty if the node has no outgoing edges.
 	 */
-	FORCEINLINE TConstArrayView<IndexType> GetNeighbors(IndexType Node) const
+	[[nodiscard]] FORCEINLINE TConstArrayView<IndexType> GetNeighbors(IndexType Node) const
 	{
 		check(IsValidNode(Node));
 		const int32 Start = Offsets[static_cast<int32>(Node)];
@@ -463,7 +485,7 @@ public:
 	 * @param Node  The node whose edge data to retrieve. Must be a valid node index.
 	 * @return A const array view of edge payloads. May be empty if the node has no outgoing edges.
 	 */
-	FORCEINLINE TConstArrayView<EdgeDataType> GetEdgeData(IndexType Node) const
+	[[nodiscard]] FORCEINLINE TConstArrayView<EdgeDataType> GetEdgeData(IndexType Node) const
 	{
 		check(IsValidNode(Node));
 		const int32 Start = Offsets[static_cast<int32>(Node)];
@@ -472,13 +494,13 @@ public:
 	}
 
 	/** @return Const view of the offsets array (length = NumNodes + 1). */
-	FORCEINLINE TConstArrayView<int32> GetOffsets() const { return TConstArrayView<int32>(Offsets); }
+	[[nodiscard]] FORCEINLINE TConstArrayView<int32> GetOffsets() const { return TConstArrayView<int32>(Offsets); }
 
 	/** @return Const view of the raw neighbor indices array. */
-	FORCEINLINE TConstArrayView<IndexType> GetNeighborArray() const { return TConstArrayView<IndexType>(Neighbors); }
+	[[nodiscard]] FORCEINLINE TConstArrayView<IndexType> GetNeighborArray() const { return TConstArrayView<IndexType>(Neighbors); }
 
 	/** @return Const view of the raw edge data array (parallel to neighbor array). */
-	FORCEINLINE TConstArrayView<EdgeDataType> GetEdgeDataArray() const { return TConstArrayView<EdgeDataType>(EdgeData); }
+	[[nodiscard]] FORCEINLINE TConstArrayView<EdgeDataType> GetEdgeDataArray() const { return TConstArrayView<EdgeDataType>(EdgeData); }
 
 	/**
 	 * Builds the CSR graph from an edge list with payloads.
