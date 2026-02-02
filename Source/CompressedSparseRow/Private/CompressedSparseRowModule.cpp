@@ -3,13 +3,13 @@
 #include "Modules/ModuleManager.h"
 
 /**
- * Module implementation for CompactSparseRow plugin.
+ * Module implementation for CompressedSparseRow plugin.
  *
  * This is a header-only library module that provides CSR graph data structures.
  * No runtime initialization or shutdown logic is required.
  */
-class FCompactSparseRowModule : public IModuleInterface
+class FCompressedSparseRowModule : public IModuleInterface
 {
 };
 
-IMPLEMENT_MODULE(FCompactSparseRowModule, CompactSparseRow)
+IMPLEMENT_MODULE(FCompressedSparseRowModule, CompressedSparseRow)

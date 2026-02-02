@@ -2,9 +2,9 @@
 
 using UnrealBuildTool;
 
-public class CompactSparseRow : ModuleRules
+public class CompressedSparseRow : ModuleRules
 {
-	public CompactSparseRow(ReadOnlyTargetRules Target) : base(Target)
+	public CompressedSparseRow(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 

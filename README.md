@@ -24,17 +24,17 @@ CSR is a compact representation for sparse graphs that stores all neighbor indic
 
 ### As a Project Plugin
 
-1. Copy the `CompactSparseRow` folder to your project's `Plugins/` directory
+1. Copy the `CompressedSparseRow` folder to your project's `Plugins/` directory
 2. Regenerate project files
-3. Add `"CompactSparseRow"` to your module's `Build.cs`:
+3. Add `"CompressedSparseRow"` to your module's `Build.cs`:
 
 ```csharp
-PublicDependencyModuleNames.AddRange(new string[] { "CompactSparseRow" });
+PublicDependencyModuleNames.AddRange(new string[] { "CompressedSparseRow" });
 ```
 
 ### As an Engine Plugin
 
-1. Copy the `CompactSparseRow` folder to `Engine/Plugins/Runtime/`
+1. Copy the `CompressedSparseRow` folder to `Engine/Plugins/Runtime/`
 2. Regenerate project files
 
 ## Usage
@@ -42,7 +42,7 @@ PublicDependencyModuleNames.AddRange(new string[] { "CompactSparseRow" });
 ### Basic Graph
 
 ```cpp
-#include "CompactSparseRow.h"
+#include "CompressedSparseRow.h"
 
 // Create a graph with 4 nodes
 TCSRGraph<int32> Graph;
@@ -69,7 +69,7 @@ for (int32 Neighbor : Graph.GetNeighbors(0))
 ### Weighted Graph
 
 ```cpp
-#include "CompactSparseRow.h"
+#include "CompressedSparseRow.h"
 
 // Graph with float edge weights
 TCSRGraphWithEdgeData<int32, float> WeightedGraph;

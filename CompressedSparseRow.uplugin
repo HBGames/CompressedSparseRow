@@ -15,7 +15,7 @@
 	"Installed": false,
 	"Modules": [
 		{
-			"Name": "CompactSparseRow",
+			"Name": "CompressedSparseRow",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
 		}
