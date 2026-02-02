@@ -1,4 +1,4 @@
-# Compact Sparse Row Graph for Unreal Engine
+# Compressed Sparse Row Graph for Unreal Engine
 
 A high-performance, memory-efficient Compressed Sparse Row (CSR) graph data structure plugin for Unreal Engine 5.
 
@@ -121,6 +121,7 @@ Graph.Build(3, Edges);
 |--------|-------------|
 | `Build(NumNodes, Edges, bSort, bDedup)` | Constructs the CSR from an edge list |
 | `GetNeighbors(Node)` | Returns `TConstArrayView` of neighbor indices |
+| `GetDegree(Node)` | Returns the out-degree (neighbor count) for a node |
 | `GetNumNodes()` | Returns the number of nodes |
 | `GetNumEdges()` | Returns the total number of edges |
 | `IsValidNode(Node)` | Checks if a node index is valid |
@@ -159,6 +160,7 @@ Node 3: Neighbors[5..8) = {0, 1, 2}
 | Build (unsorted) | O(E) |
 | Build (sorted) | O(E log(MaxDegree)) |
 | Get neighbors | O(1) |
+| Get degree | O(1) |
 | Iterate neighbors | O(degree) |
 | Memory usage | O(V + E) |
 
